@@ -1,6 +1,6 @@
 package ru.vlapin.trainings.appsecbackend;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.vlapin.trainings.appsecbackend.model.AnnotationBasedSetterPropertiesPlaceholderExample;
-import ru.vlapin.trainings.appsecbackend.model.JavaConfigBasedSetterPropertiesPlaceholderExampleImpl;
+import ru.vlapin.trainings.appsecbackend.model.JavaConfigBasedSetterPropertiesPlaceholderExample;
 import ru.vlapin.trainings.appsecbackend.service.AnnotationBasedImmutablePropertiesPlaceholderExample;
 
 @SpringBootTest
@@ -17,7 +17,7 @@ import ru.vlapin.trainings.appsecbackend.service.AnnotationBasedImmutablePropert
 class PropertiesPlaceholderExamplesTest {
 
   AnnotationBasedSetterPropertiesPlaceholderExample absppe;
-  JavaConfigBasedSetterPropertiesPlaceholderExampleImpl jcbsppe;
+  JavaConfigBasedSetterPropertiesPlaceholderExample jcbsppe;
   AnnotationBasedImmutablePropertiesPlaceholderExample abippe;
 
   @Test
@@ -37,8 +37,8 @@ class PropertiesPlaceholderExamplesTest {
   void javaConfigBasedPropertiesPlaceholderWorksCorrectlyTest() {
     assertThat(jcbsppe).isNotNull()
         .extracting(
-            JavaConfigBasedSetterPropertiesPlaceholderExampleImpl::getHost,
-            JavaConfigBasedSetterPropertiesPlaceholderExampleImpl::getPort)
+            JavaConfigBasedSetterPropertiesPlaceholderExample::getHost,
+            JavaConfigBasedSetterPropertiesPlaceholderExample::getPort)
         .contains("my.site.com", 8080);
   }
 

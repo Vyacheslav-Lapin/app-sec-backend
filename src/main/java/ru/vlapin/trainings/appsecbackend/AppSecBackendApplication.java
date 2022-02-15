@@ -16,6 +16,7 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import ru.vlapin.trainings.appsecbackend.dao.CatRepository;
 import ru.vlapin.trainings.appsecbackend.model.Cat;
+import ru.vlapin.trainings.appsecbackend.model.JavaConfigBasedSetterPropertiesPlaceholderExample;
 import ru.vlapin.trainings.appsecbackend.model.JavaConfigBasedSetterPropertiesPlaceholderExampleImpl;
 
 @EnableFeignClients
@@ -38,7 +39,7 @@ public class AppSecBackendApplication {
 
   @Bean
   @ConfigurationProperties("my-properties2")
-  JavaConfigBasedSetterPropertiesPlaceholderExampleImpl mySetterProperties2() {
+  JavaConfigBasedSetterPropertiesPlaceholderExample mySetterProperties2() {
     return new JavaConfigBasedSetterPropertiesPlaceholderExampleImpl();
   }
 

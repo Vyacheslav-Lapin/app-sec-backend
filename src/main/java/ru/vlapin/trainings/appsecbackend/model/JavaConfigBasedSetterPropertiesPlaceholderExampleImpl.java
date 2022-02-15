@@ -19,7 +19,8 @@ import org.springframework.validation.annotation.Validated;
 */
 @Data
 @Validated
-public class JavaConfigBasedSetterPropertiesPlaceholderExampleImpl implements JavaConfigBasedSetterPropertiesPlaceholderExample {
+public class JavaConfigBasedSetterPropertiesPlaceholderExampleImpl
+    implements JavaConfigBasedSetterPropertiesPlaceholderExample {
 
   /**
    * My hostname
