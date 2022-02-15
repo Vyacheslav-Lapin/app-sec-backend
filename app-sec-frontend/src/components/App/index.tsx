@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../../logo.svg';
 import './index.css';
-import UserView from "../UserView";
+import Main from "../Main";
 
 export default function App() {
   return (
@@ -16,21 +16,7 @@ export default function App() {
         >
           Learn React
         </a>
-        <table>
-          <thead>
-          <tr>
-            <th>nick name</th>
-            <th>email</th>
-            <th>name</th>
-            <th>phone</th>
-            <th>city</th>
-          </tr>
-          </thead>
-          <tbody>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-              .map(value => <UserView key={value.toString()} id={value}/>)}
-          </tbody>
-        </table>
+        <Main/>
       </header>
     </div>
   );
