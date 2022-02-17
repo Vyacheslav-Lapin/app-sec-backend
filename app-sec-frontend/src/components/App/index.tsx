@@ -15,4 +15,3 @@ export default connect(
       increaseCount: () => dispatch({type: CounterActionType.INCREASE}),
       decreaseCount: () => dispatch({type: CounterActionType.DECREASE})
     }))(Counter);
-

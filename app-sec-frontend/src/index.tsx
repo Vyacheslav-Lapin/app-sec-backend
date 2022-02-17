@@ -4,16 +4,23 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
-import {createStore} from "redux";
+import {applyMiddleware, createStore} from "redux";
 import reducer from "./reducer";
 
 ReactDOM.render(
-    // <React.StrictMode>
-    <Provider store={createStore(reducer)}>
-      <App/>
-    </Provider>
-    // </React.StrictMode>
-    ,
+    <React.StrictMode>
+      <Provider store={createStore(reducer, applyMiddleware(
+          store => next => action => {
+            console.log('dispatching type:', action.type)
+            console.log('previous state:', store.getState())
+            let result = next(action)
+            console.log('new state:', store.getState())
+            return result;
+          }
+      ))}>
+        <App/>
+      </Provider>
+    </React.StrictMode>,
     document.getElementById('root')
 );
 
