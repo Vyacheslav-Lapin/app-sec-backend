@@ -1,14 +1,14 @@
-import {CounterActionType} from "../components/App";
+import {ActionType} from "../components/App";
 
 export interface State {
   countValue: number
 }
 
-export default (state: State = {countValue: 0}, {type}: {type: CounterActionType}): State => {
+export default (state: State = {countValue: 0}, {type}: {type: ActionType}): State => {
   const {countValue} = state;
   switch (type) {
-    case CounterActionType.INCREASE: return {countValue: countValue + 1};
-    case CounterActionType.DECREASE: return {countValue: countValue - 1};
+    case ActionType.INCREASE: return {countValue: countValue + 1};
+    case ActionType.DECREASE: return {countValue: countValue - 1};
     default: return state;
   }
 }

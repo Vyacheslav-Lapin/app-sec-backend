@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App';
+import App, {ActionType} from './components/App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import {applyMiddleware, createStore} from "redux";
 import reducer from "./reducer";
+import User from "./model/User";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -16,6 +17,16 @@ ReactDOM.render(
             let result = next(action)
             console.log('new state:', store.getState())
             return result;
+          },
+          store => next => action => {
+            if (action.type === ActionType.API_QUERY && !action.payload)
+              fetch(`/api/users`)
+                  .then(response => response.json() as Promise<User[]>)
+                  .then(users => next({
+                    type: ActionType.API_QUERY,
+                    payload: users,
+                  }))
+            else return next(action);
           }
       ))}>
         <App/>

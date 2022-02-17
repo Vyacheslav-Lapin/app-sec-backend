@@ -4,14 +4,15 @@ import {connect} from "react-redux";
 import Counter from "../Counter";
 import {State} from "../../reducer";
 
-export enum CounterActionType {
+export enum ActionType {
   INCREASE = "increase",
-  DECREASE = "decrease"
+  DECREASE = "decrease",
+  API_QUERY = "api query",
 }
 
 export default connect(
     ({countValue}: State) => ({countValue}),
     dispatch => ({
-      increaseCount: () => dispatch({type: CounterActionType.INCREASE}),
-      decreaseCount: () => dispatch({type: CounterActionType.DECREASE})
+      increaseCount: () => dispatch({type: ActionType.INCREASE}),
+      decreaseCount: () => dispatch({type: ActionType.DECREASE})
     }))(Counter);

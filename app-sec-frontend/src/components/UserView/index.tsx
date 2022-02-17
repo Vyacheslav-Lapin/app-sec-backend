@@ -18,8 +18,7 @@ export default class UserView extends PureComponent<UserProps, UserState> {
 
   componentDidMount() {
     fetch(`/api/users/${this.state.id}`)
-        .then(response => response.text())
-        .then(text => JSON.parse(text) as User)
+        .then(response => response.json() as Promise<User>)
         .then(user => this.setState({user}));
   }
 
