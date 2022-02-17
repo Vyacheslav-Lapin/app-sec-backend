@@ -1,23 +1,18 @@
 import React from 'react';
-import logo from '../../logo.svg';
 import './index.css';
-import Main from "../Main";
+import {connect} from "react-redux";
+import Counter from "../Counter";
+import {State} from "../../reducer";
 
-export default function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo"/>
-        <a
-            className="App-link"
-            href="https://ru.reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Main/>
-      </header>
-    </div>
-  );
+export enum CounterActionType {
+  INCREASE = "increase",
+  DECREASE = "decrease"
 }
+
+export default connect(
+    ({countValue}: State) => ({countValue}),
+    dispatch => ({
+      increaseCount: () => dispatch({type: CounterActionType.INCREASE}),
+      decreaseCount: () => dispatch({type: CounterActionType.DECREASE})
+    }))(Counter);
+
